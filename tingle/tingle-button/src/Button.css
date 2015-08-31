@@ -1,0 +1,17 @@
+.tButton {
+  border: 0;
+  outline: none;
+}
+.tButtonPrimary {
+  background: #f80;
+}
+.tButtonSecondary {
+  background: #fff;
+  color: #666;
+}
+.tButtonText {
+  color: #0288fd;
+  background-color: transparent;
+}
+
+/*# sourceMappingURL=Button.css.map */

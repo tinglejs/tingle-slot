@@ -1,0 +1,58 @@
+/**
+ * Slot Component Style for tingle
+ * @auther minjie.lmj
+ *
+ * Copyright 2014-2015, Tingle Team, Alinw.
+ * All rights reserved.
+ */
+
+@require '../node_modules/tingle-style/src/var'
+artBoardWidth = 750
+slotItemHeight = 88
+
+.tSlot
+    border-top 1px solid #ccc
+.tSlotHeader
+    background-color #f2f2f2
+    height rem(slotItemHeight)
+    font-size rem(32)
+.tSlotCancel
+    margin-left rem(30)
+.tSlotConfirm
+    margin-right rem(30)
+.tSlotCancel, .tSlotConfirm
+    width rem(57)
+    font-size rem(28)
+.tSlotConfirm
+    color #f86a35
+.tSlotBody
+    height rem(slotItemHeight * 5)
+    overflow hidden
+    background-color #f9f9f9
+    font-size rem(28)
+    > div
+        -webkit-mask-image: -webkit-gradient(linear,left top,left bottom,color-stop(0%,rgba(0,0,0,0)),color-stop(40%,rgba(0,0,0,1)),color-stop(60%,rgba(0,0,0,1)),color-stop(100%,rgba(0,0,0,0)));
+        -webkit-mask-image: -webkit-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,1) 40%,rgba(0,0,0,1) 60%,rgba(0,0,0,0) 100%);
+        mask-image: linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,1) 40%,rgba(0,0,0,1) 60%,rgba(0,0,0,0) 100%);
+    li
+        height rem(slotItemHeight)
+        line-height rem(slotItemHeight)
+        text-align center
+    .tSlotItemActive
+        font-size rem(36)
+        color #f86a35
+.tSlotBody:before, .tSlotBody:after
+    content ""
+    display inline-block
+    position absolute
+    top rem(slotItemHeight * 2)
+    left 0
+    height 0
+    width 100%
+    border-top 1px solid #ccc
+.tSlotBody:after
+    top rem(slotItemHeight * 3)
+
+.hairlines
+    .Slot, .tSlotBody:before, .tSlotBody:after
+        border-width rem(1)

@@ -1,0 +1,70 @@
+/**
+ * Slot Component Style for tingle
+ * @auther minjie.lmj
+ *
+ * Copyright 2014-2015, Tingle Team, Alinw.
+ * All rights reserved.
+ */
+.tSlot {
+  border-top: 1px solid #ccc;
+}
+.tSlotHeader {
+  background-color: #f2f2f2;
+  height: 1.173333333333333rem;
+  font-size: 0.426666666666667rem;
+}
+.tSlotCancel {
+  margin-left: 0.4rem;
+}
+.tSlotConfirm {
+  margin-right: 0.4rem;
+}
+.tSlotCancel,
+.tSlotConfirm {
+  width: 0.76rem;
+  font-size: 0.373333333333333rem;
+}
+.tSlotConfirm {
+  color: #f86a35;
+}
+.tSlotBody {
+  height: 5.866666666666666rem;
+  overflow: hidden;
+  background-color: #f9f9f9;
+  font-size: 0.373333333333333rem;
+}
+.tSlotBody > div {
+  -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0,0,0,0)), color-stop(40%, #000), color-stop(60%, #000), color-stop(100%, rgba(0,0,0,0)));
+  -webkit-mask-image: -webkit-linear-gradient(top, rgba(0,0,0,0) 0, #000 40%, #000 60%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0, #000 40%, #000 60%, rgba(0,0,0,0) 100%);
+}
+.tSlotBody li {
+  height: 1.173333333333333rem;
+  line-height: 1.173333333333333rem;
+  text-align: center;
+}
+.tSlotBody .tSlotItemActive {
+  font-size: 0.48rem;
+  color: #f86a35;
+}
+.tSlotBody:before,
+.tSlotBody:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 2.346666666666667rem;
+  left: 0;
+  height: 0;
+  width: 100%;
+  border-top: 1px solid #ccc;
+}
+.tSlotBody:after {
+  top: 3.52rem;
+}
+.hairlines .Slot,
+.hairlines .tSlotBody:before,
+.hairlines .tSlotBody:after {
+  border-width: 0.013333333333333rem;
+}
+
+/*# sourceMappingURL=Slot.css.map */

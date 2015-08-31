@@ -1,0 +1,39 @@
+{
+  "name": "tingle-slot",
+  "version": "0.0.1",
+  "description": "The `Slot Component` for tinglejs",
+  "repository": "https://github.com/tinglejs/tingle-slot.git",
+  "author": {
+    "name": "gbk",
+    "email": "ck0123456@gmail.com"
+  },
+  "main": "src/index.js",
+  "files": [
+    "src",
+    "README.md"
+  ],
+  "keywords": [
+    "tingle-slot",
+    "Slot",
+    "select"
+  ],
+  "dependencies": {
+    "classnames": "^2.1.2",
+    "fastclick": "^1.0.6",
+    "react": "^0.13.3",
+    "tingle-context": "latest",
+    "tingle-style": "latest",
+    "zepto": "0.0.4"
+  },
+  "devDependencies": {
+    "babel-core": "^5.8.19",
+    "babel-loader": "^5.3.2",
+    "gulp": "^3.9.0",
+    "tingle-dev-tools": "latest"
+  },
+  "scripts": {
+    "start": "gulp server"
+  },
+  "license": "MIT",
+  "screenshots": "https://img.alicdn.com/tps/TB1NWReJpXXXXcsXVXXXXXXXXXX-322-481.png"
+}
