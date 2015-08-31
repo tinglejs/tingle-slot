@@ -1,4 +1,6 @@
-# tingle-slot [![npm version](https://badge.fury.io/js/tingle-slot.svg)](http://badge.fury.io/js/tingle-slot)
+# tingle-slot
+
+[![npm version](https://badge.fury.io/js/tingle-slot.svg)](http://badge.fury.io/js/tingle-slot)
 
 The `Slot Component` for tinglejs
 
@@ -9,6 +11,12 @@ The `Slot Component` for tinglejs
 Slot 是老虎机滚轮选择器。
 
 ![效果图](https://img.alicdn.com/tps/TB1NWReJpXXXXcsXVXXXXXXXXXX-322-481.png)
+
+## Install
+
+```
+npm install tingle-slot --save
+```
 
 ## Simple Usage
 
