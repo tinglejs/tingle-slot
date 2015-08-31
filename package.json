@@ -1,6 +1,6 @@
 {
   "name": "tingle-slot",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "The `Slot Component` for tinglejs",
   "repository": "https://github.com/tinglejs/tingle-slot.git",
   "author": {
@@ -22,6 +22,9 @@
     "fastclick": "^1.0.6",
     "react": "^0.13.3",
     "tingle-context": "latest",
+    "tingle-button": "latest",
+    "tingle-layer": "latest",
+    "tingle-mask": "latest",
     "tingle-scroller": "latest",
     "tingle-style": "latest",
     "zepto": "0.0.4"
