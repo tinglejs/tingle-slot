@@ -1,13 +1,13 @@
 /**
  * Scroller Component Demo for tingle
- * @auther gbk
+ * @author gbk
  *
  * Copyright 2014-2015, Tingle Team, Alinw.
  * All rights reserved.
  */
-var classnames = require('classnames');
-var Layer = require('tingle-layer');
-var Scroller = require('tingle-scroller');
+let classnames = require('classnames');
+let Layer = require('tingle-layer');
+let Scroller = require('tingle-scroller');
 
 // 滑动效果的动画函数
 const LINEAR_EASE = {
@@ -15,12 +15,15 @@ const LINEAR_EASE = {
     fn: (k) => k
 };
 
+let isArray = (arr) => Object.prototype.toString.call(arr) === '[object Array]';
+let equals = (obj1, obj2)=>JSON.stringify(obj1) === JSON.stringify(obj2);
+
 class Slot extends React.Component {
 
     constructor(props) {
         super(props);
 
-        var t = this;
+        let t = this;
 
         // 初始状态
         t.state = {
@@ -32,23 +35,23 @@ class Slot extends React.Component {
     }
 
     componentDidMount() {
-        var t = this;
+        let t = this;
 
         // 获取所有 scroller 的容器
-        var slotBody = React.findDOMNode(t.refs.root).querySelector('.tSlotBody');
+        let slotBody = React.findDOMNode(t.refs.root).querySelector('.tSlotBody');
 
         // 获取选项高度
-        var li = slotBody.querySelector('li');
+        let li = slotBody.querySelector('li');
         t._itemHeight = parseFloat(getComputedStyle(li, null).height);
-        console.log(t._itemHeight)
+        console.log(t._itemHeight);
 
         // tap 事件触发选中状态变更
         slotBody.addEventListener('iscroll:tap', (e) => {
-            var className = e.target.className;
-            var match = /tSlotItem(\d+)_(\d+)/.exec(className);
+            let className = e.target.className;
+            let match = /tSlotItem(\d+)_(\d+)/.exec(className);
             if (match && className.indexOf('tSlotItemActive') === -1) {
-                var column = parseInt(match[1]);
-                var index = parseInt(match[2]);
+                let column = parseInt(match[1]);
+                let index = parseInt(match[2]);
                 t.props.onChange(t.getData(column, index), column, index);
             }
         }, false);
@@ -58,7 +61,7 @@ class Slot extends React.Component {
     }
 
     componentDidUpdate() {
-        var t = this;
+        let t = this;
 
         // 可见的时候滚动到选中的选项
         if (t.state.show && t._willRefresh) {
@@ -69,14 +72,14 @@ class Slot extends React.Component {
 
     // 减少渲染次数
     componentWillReceiveProps(nextProps) {
-        var t = this;
+        let t = this;
 
-        var data = nextProps.data;
-        var selectedIndex = t.findSelectedIndex(nextProps);
+        let data = nextProps.data;
+        let selectedIndex = t.findSelectedIndex(nextProps);
 
         // 数据变化需要重新初始化 scroller
-        var state = {};
-        var willRefresh = false;
+        let state = {};
+        let willRefresh = false;
         if (!equals(t.state.data, data)) {
             state.data = data;
             willRefresh = true;
@@ -92,17 +95,17 @@ class Slot extends React.Component {
     }
 
     scrollAll(time) {
-        var t = this;
+        let t = this;
         t.state.selectedIndex.forEach((index, column) => {
-            var scroller = t.refs['scroller' + column].scroller;
+            let scroller = t.refs['scroller' + column].scroller;
             scroller.scrollTo(0, -index * t._itemHeight, time, LINEAR_EASE);
         });
     }
 
     findSelectedIndex(props) {
-        var data = props.data;
-        var value = props.value;
-        var selectedIndex = [];
+        let data = props.data;
+        let value = props.value;
+        let selectedIndex = [];
 
         // 遍历数据模型
         data.forEach((columnData, column) => {
@@ -110,7 +113,7 @@ class Slot extends React.Component {
             selectedIndex[column] = 0;
 
             // 遍历每一列
-            for (var i = 0; i < columnData.length; i++) {
+            for (let i = 0; i < columnData.length; i++) {
 
                 // 定位选中值
                 if (value[column] && columnData[i].value === value[column].value) {
@@ -124,16 +127,16 @@ class Slot extends React.Component {
     }
 
     handleScrollEnd(column) {
-        var t = this;
-        var scroller = t.refs['scroller' + column].scroller;
-        var height = t._itemHeight;
-        var remainder = Math.abs(scroller.y % height);
-        var index = scroller.y / height;
+        let t = this;
+        let scroller = t.refs['scroller' + column].scroller;
+        let height = t._itemHeight;
+        let remainder = Math.abs(scroller.y % height);
+        let index = scroller.y / height;
 
         // 没有滚动到选项，需要继续滚动一段距离
         if (remainder) {
 
-            var func;
+            let func;
             if (scroller.distY > 0) { // 向下滚动
                 if (remainder < height * 0.7) {
                     func = 'ceil';
@@ -169,7 +172,7 @@ class Slot extends React.Component {
     }
 
     handleCancel() {
-        var t = this;
+        let t = this;
         try {
             t.props.onCancel();
         } finally {
@@ -178,7 +181,7 @@ class Slot extends React.Component {
     }
 
     handleConfirm() {
-        var t = this;
+        let t = this;
         try {
             t.props.onConfirm(t.getData());
         } finally {
@@ -188,9 +191,9 @@ class Slot extends React.Component {
 
     // 获取值的时候指定变更的列，为什么要这么做，是因为有变更后我不直接改 state！
     getData(sColumn, sIndex) {
-        var t = this;
-        var ret = [];
-        var { data, selectedIndex } = t.state;
+        let t = this;
+        let ret = [];
+        let { data, selectedIndex } = t.state;
 
         selectedIndex.forEach((index, column) => {
             ret[column] = data[column][column === sColumn ? sIndex : index];
@@ -200,8 +203,8 @@ class Slot extends React.Component {
     }
 
     render() {
-        var t = this;
-        var {className, show, bottom, data, width, closeable, ...other} = t.props;
+        let t = this;
+        let {className, show, bottom, data, width, closeable, ...other} = t.props;
 
         return (
             <Layer onHide={t.handleCancel.bind(t)} show={t.state.show} closeable={!(closeable === false)} width="100%" bottom={0} {...other}>
@@ -236,17 +239,19 @@ class Slot extends React.Component {
                     </div>
                 </div>
             </Layer>
-        );
+        )
     }
 }
 
 Slot.defaultProps = {
     title: '',
     value: [],
+    data:[],
+    className:'',
     onConfirm() {},
     onCancel() {},
     onChange() {}
-}
+};
 
 // http://facebook.github.io/react/docs/reusable-components.html
 Slot.propTypes = {
@@ -257,13 +262,13 @@ Slot.propTypes = {
     onConfirm: React.PropTypes.func,
     onCancel: React.PropTypes.func,
     onChange: React.PropTypes.func
-}
+};
 
 // 格式化单列数据
 Slot.formatColumnValue = (columnData, value) => {
 
     // 兼容简单选中值
-    var columnValue;
+    let columnValue;
     if (typeof value !== 'undefined') {
         if (value.hasOwnProperty('value')) {
             columnValue = value.value;
@@ -274,8 +279,8 @@ Slot.formatColumnValue = (columnData, value) => {
     value = undefined;
 
     // 遍历每一项
-    for (var i = 0; i < columnData.length; i++) {
-        var cell = columnData[i];
+    for (let i = 0; i < columnData.length; i++) {
+        let cell = columnData[i];
 
         // 兼容非对象的数据
         if (typeof cell !== 'object') {
@@ -325,7 +330,7 @@ Slot.formatDataValue = (data = [], value = []) => {
     data.forEach((columnData, column) => {
 
         // 格式化列数据
-        var ret = Slot.formatColumnValue(columnData, value[column]);
+        let ret = Slot.formatColumnValue(columnData, value[column]);
         value[column] = ret.columnValue;
     });
 
@@ -336,11 +341,3 @@ Slot.formatDataValue = (data = [], value = []) => {
 };
 
 module.exports = Slot;
-
-function isArray (arr) {
-    return Object.prototype.toString.call(arr) === '[object Array]';
-}
-
-function equals(obj1, obj2) {
-    return JSON.stringify(obj1) === JSON.stringify(obj2);
-}
