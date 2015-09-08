@@ -10,13 +10,13 @@ Slot 是老虎机滚轮选择器。
 
 ## Install
 
-```
+```bash
 npm install tingle-slot --save
 ```
 
 ## Simple Usage
 
-```
+```js
 constructor(props) {
     super(props);
     this.state = {
@@ -88,7 +88,7 @@ Slot 对数据格式的要求比较苛刻，但这是必要的！为了方便用
 
 每个选项必须包括 text（显示的文字） 和 value（选项的值） 属性。典型的格式如下：
 
-```
+```js
 [
     [
         {
@@ -117,7 +117,7 @@ Slot 对数据格式的要求比较苛刻，但这是必要的！为了方便用
 
 数组中的元素一般为 data 中对应选项的引用，也可以通过 value 属性来和选项建立绑定。典型的格式如下：
 
-```
+```js
 [
     {
         text: '浙江',
@@ -148,7 +148,7 @@ Slot 对数据格式的要求比较苛刻，但这是必要的！为了方便用
 
 `data` 和 `value` 的非标准格式兼容，返回标准格式的 { data, value }
 
-```
+```js
 t.setState(Slot.formatDataValue(xxData, xxValue));
 ```
 
@@ -156,7 +156,7 @@ t.setState(Slot.formatDataValue(xxData, xxValue));
 
   - data 选项中如果 text 或 value 缺少任意一项，都会用另一项替代。
 
-    ```
+    ```js
     [
         [
             { text: '江苏' }, // => { text: '江苏', value: '江苏' }
@@ -167,7 +167,7 @@ t.setState(Slot.formatDataValue(xxData, xxValue));
 
   - 如果数组元素不是对象，那么 text 和 value 都会被赋值为元素本身。
 
-    ```
+    ```js
     [
         [
             '江苏', // => { text: '江苏', value: '江苏' }
@@ -178,7 +178,7 @@ t.setState(Slot.formatDataValue(xxData, xxValue));
 
   - 如果传入是一个一维数组，则自动包裹为二维数组。
 
-    ```
+    ```js
     [ '江苏', '浙江' ] // => [ [ { text: '江苏', value: '江苏' }, { text: '浙江', value: '浙江' } ] ]
     ```
 
