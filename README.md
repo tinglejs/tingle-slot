@@ -1,10 +1,6 @@
-# tingle-slot
-
-[![npm version](https://badge.fury.io/js/tingle-slot.svg)](http://badge.fury.io/js/tingle-slot)
+# tingle-slot [![npm version](https://badge.fury.io/js/tingle-slot.svg)](http://badge.fury.io/js/tingle-slot)
 
 The `Slot Component` for tinglejs
-
----
 
 ## TL;DR
 
