@@ -7,6 +7,9 @@
     "name": "gbk",
     "email": "ck0123456@gmail.com"
   },
+  "maintainers":[
+    "yize <yize.shc@gmail.com>"
+  ],
   "main": "src/index.js",
   "files": [
     "src",
@@ -38,5 +41,5 @@
     "start": "gulp server"
   },
   "license": "MIT",
-  "screenshots": "https://img.alicdn.com/tps/TB1NWReJpXXXXcsXVXXXXXXXXXX-322-481.png"
+  "screenshots": "https://img.alicdn.com/tps/TB1onQXJpXXXXbCXXXXXXXXXXXX-750-1254.png"
 }
