@@ -76,6 +76,8 @@ Slot 对数据格式的要求比较苛刻，但这是必要的！为了方便用
 |data|required|-|数据（注1）|
 |value|required|-|选中数据（注2）|
 |title|optional|-|表单域名称|
+|confirmText|optional|确认|确认文案|
+|cancelText|optional|取消|取消文案|
 |onChange|optional|-|列选中变化触发的事件（注3）|
 |onConfirm|optional|-|确认所有选中触发的事件（注4）|
 |onCancel|optional|-|取消当前选中触发的事件（注5）|

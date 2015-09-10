@@ -1,6 +1,6 @@
 {
   "name": "tingle-slot",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "The `Slot Component` for tinglejs",
   "repository": "https://github.com/tinglejs/tingle-slot.git",
   "author": {
