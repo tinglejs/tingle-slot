@@ -212,7 +212,7 @@ class Slot extends React.Component {
                 })}>
                     <div className="tSlotHeader tFBH tFC3 tFBAC">
                         <div className="tSlotCancel" onClick={t.handleCancel.bind(t)}>{t.props.cancelText}</div>
-                        <div className="tFB1 tFAC">{t.state.title}</div>
+                        <div className="tFB1 tFAC tSlotTitle">{t.state.title}</div>
                         <div className="tSlotConfirm"  onClick={t.handleConfirm.bind(t)}>{t.props.confirmText}</div>
                     </div>
                     <div className="tSlotBody tFBH tFC9 tPR">
