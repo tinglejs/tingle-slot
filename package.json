@@ -1,6 +1,6 @@
 {
   "name": "tingle-slot",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "The `Slot Component` for tinglejs",
   "repository": "https://github.com/tinglejs/tingle-slot.git",
   "author": {
@@ -20,20 +20,19 @@
   "dependencies": {
     "classnames": "^2.1.2",
     "tingle-context": "~0.1.0",
-    "tingle-mask": "~0.1.0",
-    "tingle-layer": "~0.1.0",
+    "tingle-mask": "~0.2.0",
+    "tingle-layer": "~0.2.0",
     "tingle-scroller": "~0.1.0",
-    "tingle-style": "~0.1.0"
+    "tingle-style": "~0.2.0"
   },
   "devDependencies": {
     "babel-core": "^5.8.19",
     "babel-loader": "^5.3.2",
     "gulp": "^3.9.0",
     "tingle-dev-tools": "latest",
-    "tingle-button": "~0.1.1",
+    "tingle-button": "~0.2.0",
     "fastclick": "^1.0.6",
-    "react": "^0.13.3",
-    "zepto": "0.0.4"
+    "react": "^0.13.3"
   },
   "scripts": {
     "start": "gulp server"

@@ -46,7 +46,7 @@ class Slot extends React.Component {
         console.log(t._itemHeight);
 
         // tap 事件触发选中状态变更
-        slotBody.addEventListener('iscroll:tap', (e) => {
+        slotBody.addEventListener('iscroll:tap', function(e) {
             let className = e.target.className;
             let match = /tSlotItem(\d+)_(\d+)/.exec(className);
             if (match && className.indexOf('tSlotItemActive') === -1) {
@@ -96,7 +96,7 @@ class Slot extends React.Component {
 
     scrollAll(time) {
         let t = this;
-        t.state.selectedIndex.forEach((index, column) => {
+        t.state.selectedIndex.forEach(function(index, column) {
             let scroller = t.refs['scroller' + column].scroller;
             scroller.scrollTo(0, -index * t._itemHeight, time, LINEAR_EASE);
         });
@@ -108,7 +108,7 @@ class Slot extends React.Component {
         let selectedIndex = [];
 
         // 遍历数据模型
-        data.forEach((columnData, column) => {
+        data.forEach(function(columnData, column) {
 
             selectedIndex[column] = 0;
 
@@ -195,7 +195,7 @@ class Slot extends React.Component {
         let ret = [];
         let { data, selectedIndex } = t.state;
 
-        selectedIndex.forEach((index, column) => {
+        selectedIndex.forEach(function(index, column) {
             ret[column] = data[column][column === sColumn ? sIndex : index];
         });
 
@@ -217,13 +217,13 @@ class Slot extends React.Component {
                         <div className="tSlotConfirm"  onClick={t.handleConfirm.bind(t)}>完成</div>
                     </div>
                     <div className="tSlotBody tFBH tFC9 tPR">
-                        {t.state.data.map((m, i) => {
+                        {t.state.data.map(function(m, i) {
                             return (
                                 <Scroller ref={'scroller' + i} key={'scroller' + i} className="tFB1" autoRefresh={t.state.show} tap="iscroll:tap" onScrollEnd={t.handleScrollEnd.bind(t, i)}>
                                     <ul>
                                         <li></li>
                                         <li></li>
-                                        {m.map((n, j) => {
+                                        {m.map(function(n, j) {
                                             return (
                                                 <li key={n.value} className={classnames('tSlotItem' + i + '_' + j, {
                                                     tSlotItemActive: j === t.state.selectedIndex[i]
@@ -265,7 +265,7 @@ Slot.propTypes = {
 };
 
 // 格式化单列数据
-Slot.formatColumnValue = (columnData, value) => {
+Slot.formatColumnValue = function(columnData, value) {
 
     // 兼容简单选中值
     let columnValue;
@@ -316,7 +316,7 @@ Slot.formatColumnValue = (columnData, value) => {
 };
 
 // 格式化多列数据
-Slot.formatDataValue = (data = [], value = []) => {
+Slot.formatDataValue = function (data = [], value = []) {
 
     // 兼容单列数据的缩略写法
     if (!isArray(data[0])) {
@@ -327,7 +327,7 @@ Slot.formatDataValue = (data = [], value = []) => {
     }
 
     // 遍历数据模型
-    data.forEach((columnData, column) => {
+    data.forEach(function(columnData, column) {
 
         // 格式化列数据
         let ret = Slot.formatColumnValue(columnData, value[column]);

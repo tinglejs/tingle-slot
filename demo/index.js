@@ -5,8 +5,8 @@
  * Copyright 2014-2015, Tingle Team, Alinw.
  * All rights reserved.
  */
-var Context = require('tingle-context');
-window.FaskClick && FastClick.attach(document.body);
+let Context = require('tingle-context');
+window.FastClick && FastClick.attach(document.body);
 
-var Demo = require('./SlotDemo');
+let Demo = require('./SlotDemo');
 React.render(<Demo/>, document.getElementById('TingleDemo'));
