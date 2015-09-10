@@ -247,7 +247,7 @@ Slot.defaultProps = {
     value: [],
     data:[],
     className:'',
-    confirmText: '确定',
+    confirmText: '完成',
     cancelText: '取消',
     onConfirm() {},
     onCancel() {},
