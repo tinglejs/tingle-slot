@@ -16,7 +16,7 @@ const LINEAR_EASE = {
 };
 
 let isArray = (arr) => Object.prototype.toString.call(arr) === '[object Array]';
-let equals = (obj1, obj2)=>JSON.stringify(obj1) === JSON.stringify(obj2);
+let equals = (obj1, obj2) => JSON.stringify(obj1) === JSON.stringify(obj2);
 
 class Slot extends React.Component {
 
@@ -43,7 +43,6 @@ class Slot extends React.Component {
         // 获取选项高度
         let li = slotBody.querySelector('li');
         t._itemHeight = parseFloat(getComputedStyle(li, null).height);
-        console.log(t._itemHeight);
 
         // tap 事件触发选中状态变更
         slotBody.addEventListener('iscroll:tap', function(e) {
@@ -212,9 +211,9 @@ class Slot extends React.Component {
                     [className]: !!className
                 })}>
                     <div className="tSlotHeader tFBH tFC3 tFBAC">
-                        <div className="tSlotCancel" onClick={t.handleCancel.bind(t)}>取消</div>
+                        <div className="tSlotCancel" onClick={t.handleCancel.bind(t)}>{t.props.cancelText}</div>
                         <div className="tFB1 tFAC">{t.state.title}</div>
-                        <div className="tSlotConfirm"  onClick={t.handleConfirm.bind(t)}>完成</div>
+                        <div className="tSlotConfirm"  onClick={t.handleConfirm.bind(t)}>{t.props.confirmText}</div>
                     </div>
                     <div className="tSlotBody tFBH tFC9 tPR">
                         {t.state.data.map(function(m, i) {
@@ -248,6 +247,8 @@ Slot.defaultProps = {
     value: [],
     data:[],
     className:'',
+    confirmText: '确定',
+    cancelText: '取消',
     onConfirm() {},
     onCancel() {},
     onChange() {}
@@ -259,6 +260,8 @@ Slot.propTypes = {
     title: React.PropTypes.string,
     data: React.PropTypes.array.isRequired,
     value: React.PropTypes.array,
+    confirmText: React.PropTypes.string,
+    cancelText: React.PropTypes.string,
     onConfirm: React.PropTypes.func,
     onCancel: React.PropTypes.func,
     onChange: React.PropTypes.func
@@ -316,7 +319,7 @@ Slot.formatColumnValue = function(columnData, value) {
 };
 
 // 格式化多列数据
-Slot.formatDataValue = function (data = [], value = []) {
+Slot.formatDataValue = function(data = [], value = []) {
 
     // 兼容单列数据的缩略写法
     if (!isArray(data[0])) {

@@ -123,7 +123,7 @@ class Demo extends React.Component {
                     <div>确认值：{t.state.confirmedValue[2].text + ' ' + t.state.confirmedValue[1].text + ' ' + t.state.confirmedValue[0].text}</div>
                     <div>临时值：{t.state.value[2].text + ' ' + t.state.value[1].text + ' ' + t.state.value[0].text}</div>
                 </div>
-                <Slot ref="slot" data={t.state.data} value={t.state.value} title="title" onConfirm={t.handleConfirm.bind(t)} onChange={t.handleChange.bind(t)} onCancel={t.handleCancel.bind(t)}/>
+                <Slot ref="slot" data={t.state.data} confirmText="Confirm" cancelText="Cancel" value={t.state.value} title="title" onConfirm={t.handleConfirm.bind(t)} onChange={t.handleChange.bind(t)} onCancel={t.handleCancel.bind(t)}/>
             </div>
         );
     }

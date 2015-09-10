@@ -21,8 +21,9 @@
 }
 .tSlotCancel,
 .tSlotConfirm {
-  width: 29px;
+  min-width: 29px;
   font-size: 14px;
+  white-space: nowrap;
 }
 .tSlotConfirm {
   color: #f86a35;
@@ -33,6 +34,9 @@
   background-color: #f9f9f9;
   font-size: 14px;
 }
+.tSlotBody > .tScroller > .tDIB {
+  width: 100%;
+}
 .tSlotBody > div {
   -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0,0,0,0)), color-stop(40%, #000), color-stop(60%, #000), color-stop(100%, rgba(0,0,0,0)));
   -webkit-mask-image: -webkit-linear-gradient(top, rgba(0,0,0,0) 0, #000 40%, #000 60%, rgba(0,0,0,0) 100%);
@@ -40,8 +44,11 @@
 }
 .tSlotBody li {
   height: 44px;
+  overflow: hidden;
   line-height: 44px;
   text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .tSlotBody .tSlotItemActive {
   font-size: 18px;
