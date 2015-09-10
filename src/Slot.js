@@ -211,9 +211,9 @@ class Slot extends React.Component {
                 <div ref="root" className={classnames('tSlot', {
                     [className]: !!className
                 })}>
-                    <div className="tSlotHeader tFBH tFC3 tFBAC">
+                    <div className="tSlotHeader tFBH tFBAC">
                         <div className="tSlotCancel" onClick={t.handleCancel.bind(t)}>取消</div>
-                        <div className="tFB1 tFAC">{t.state.title}</div>
+                        <div className="tFB1 tFAC sSlotTitle">{t.state.title}</div>
                         <div className="tSlotConfirm"  onClick={t.handleConfirm.bind(t)}>完成</div>
                     </div>
                     <div className="tSlotBody tFBH tFC9 tPR">

@@ -12,6 +12,7 @@
   background-color: #f2f2f2;
   height: 44px;
   font-size: 16px;
+  color: #424242;
 }
 .tSlotCancel {
   margin-left: 15px;
@@ -26,6 +27,9 @@
 }
 .tSlotConfirm {
   color: #f86a35;
+}
+.sSlotTitle {
+  font-size: 18px;
 }
 .tSlotBody {
   height: 220px;
