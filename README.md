@@ -73,8 +73,8 @@ Slot 对数据格式的要求比较苛刻，但这是必要的！为了方便用
 | 配置项 | 必填 | 默认值 | 功能/备注 |
 |---|----|---|----|
 |className|optional|-|自定义样式类|
-|data|required|-|数据（注1）|
-|value|required|-|选中数据（注2）|
+|data|optional|-|数据（注1）|
+|value|optional|-|选中数据（注2）|
 |title|optional|-|表单域名称|
 |confirmText|optional|完成|确认文案|
 |cancelText|optional|取消|取消文案|

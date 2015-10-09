@@ -1,3 +1,8 @@
+0.2.2 / 2015-10-09
+==================
+
+* fix issue https://github.com/tinglejs/tingle-select-field/issues/1 , make data & value optional.
+
 0.2.1 / 2015-09-11
 ==================
 

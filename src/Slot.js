@@ -28,8 +28,8 @@ class Slot extends React.Component {
         // 初始状态
         t.state = {
             show: false,
-            title: t.props.title,
-            data: t.props.data,
+            title: t.props.title || '',
+            data: t.props.data || [],
             selectedIndex: t.findSelectedIndex(t.props)
         };
     }
@@ -41,8 +41,7 @@ class Slot extends React.Component {
         let slotBody = React.findDOMNode(t.refs.root).querySelector('.tSlotBody');
 
         // 获取选项高度
-        let li = slotBody.querySelector('li');
-        t._itemHeight = parseFloat(getComputedStyle(li, null).height);
+        t.findItemHeight(slotBody);
 
         // tap 事件触发选中状态变更
         slotBody.addEventListener('iscroll:tap', function(e) {
@@ -62,8 +61,12 @@ class Slot extends React.Component {
     componentDidUpdate() {
         let t = this;
 
+        // 获取选项高度
+        t.findItemHeight();
+
         // 可见的时候滚动到选中的选项
         if (t.state.show && t._willRefresh) {
+
             t._willRefresh = false;
             t.scrollAll(200);
         }
@@ -93,6 +96,15 @@ class Slot extends React.Component {
         }
     }
 
+    findItemHeight(slotBody) {
+        let t = this;
+        if (!t._itemHeight) {
+            slotBody = slotBody || React.findDOMNode(t.refs.root).querySelector('.tSlotBody');
+            let li = slotBody.querySelector('li');
+            t._itemHeight = li ? parseFloat(getComputedStyle(li, null).height) : 0;
+        }
+    }
+
     scrollAll(time) {
         let t = this;
         t.state.selectedIndex.forEach(function(index, column) {
@@ -102,8 +114,8 @@ class Slot extends React.Component {
     }
 
     findSelectedIndex(props) {
-        let data = props.data;
-        let value = props.value;
+        let data = props.data || [];
+        let value = props.value || [];
         let selectedIndex = [];
 
         // 遍历数据模型
