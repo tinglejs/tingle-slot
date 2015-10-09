@@ -1,7 +1,7 @@
 {
   "name": "tingle-slot",
   "version": "0.2.2",
-  "description": "The `Slot Component` for tinglejs",
+  "description": "老虎机，用于模拟原生的 Select 交互。",
   "repository": "https://github.com/tinglejs/tingle-slot.git",
   "author": {
     "name": "gbk",
@@ -18,7 +18,9 @@
   "keywords": [
     "tingle-slot",
     "Slot",
-    "select"
+    "select",
+    "选择",
+    "老虎机"
   ],
   "dependencies": {
     "classnames": "^2.1.2",
