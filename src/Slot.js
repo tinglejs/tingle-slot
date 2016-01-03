@@ -236,7 +236,7 @@ class Slot extends React.Component {
                                         <li></li>
                                         {m.map(function(n, j) {
                                             return (
-                                                <li key={n.value} className={classnames('tSlotItem' + i + '_' + j, {
+                                                <li key={'item' + i + '_' + j} className={classnames('tSlotItem' + i + '_' + j, {
                                                     tSlotItemActive: j === t.state.selectedIndex[i]
                                                 })}>{n.text}</li>
                                             );
