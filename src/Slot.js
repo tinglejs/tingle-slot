@@ -84,6 +84,19 @@ class Slot extends React.Component {
         let willRefresh = false;
         if (!equals(t.state.data, data)) {
             state.data = data;
+            if (t.props.scrollMod == 'keep') { // 替换列后仍保留指定值的位置
+                // 记录旧值在新数据中的索引
+                t._selectedIndex = t.findSelectedIndex({
+                    data: data,
+                    value: t.state.selectedIndex.map(function(n, i) {
+                        return t.state.data[i][n];
+                    })
+                });
+                // 标记变更的列
+                t._columnChanged = t.state.data.map(function(n, i) {
+                    return !equals(data[i], n);
+                });
+            }
             willRefresh = true;
         }
         if (!equals(t.state.selectedIndex, selectedIndex)) {
@@ -107,10 +120,26 @@ class Slot extends React.Component {
 
     scrollAll(time) {
         let t = this;
-        t.state.selectedIndex.forEach(function(index, column) {
-            let scroller = t.refs['scroller' + column].scroller;
-            scroller.scrollTo(0, -index * t._itemHeight, time, LINEAR_EASE);
-        });
+        if (t.props.scrollMod == 'keep' && t._selectedIndex) {
+            t._selectedIndex.forEach(function(index, column) {
+                let scroller = t.refs['scroller' + column].scroller;
+                if (t._columnChanged[column]) {
+                    scroller.scrollTo(0, -index * t._itemHeight, 0, LINEAR_EASE);
+                }
+            });
+            delete t._selectedIndex;
+            setTimeout(function() {
+                t.state.selectedIndex.forEach(function(index, column) {
+                    let scroller = t.refs['scroller' + column].scroller;
+                    scroller.scrollTo(0, -index * t._itemHeight, time, LINEAR_EASE);
+                });
+            }, 5);
+        } else {
+            t.state.selectedIndex.forEach(function(index, column) {
+                let scroller = t.refs['scroller' + column].scroller;
+                scroller.scrollTo(0, -index * t._itemHeight, time, LINEAR_EASE);
+            });
+        }
     }
 
     findSelectedIndex(props) {
@@ -263,7 +292,8 @@ Slot.defaultProps = {
     cancelText: '取消',
     onConfirm() {},
     onCancel() {},
-    onChange() {}
+    onChange() {},
+    scrollMod: 'reset'
 };
 
 // http://facebook.github.io/react/docs/reusable-components.html
@@ -276,7 +306,8 @@ Slot.propTypes = {
     cancelText: React.PropTypes.string,
     onConfirm: React.PropTypes.func,
     onCancel: React.PropTypes.func,
-    onChange: React.PropTypes.func
+    onChange: React.PropTypes.func,
+    scrollMod: React.PropTypes.string
 };
 
 // 格式化单列数据
