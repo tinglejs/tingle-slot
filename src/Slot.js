@@ -166,8 +166,18 @@ class Slot extends React.Component {
         return selectedIndex;
     }
 
+    handleScrollStart() {
+        let t = this;
+        t.setState({
+            scrolling: true
+        });
+    }
+
     handleScrollEnd(column) {
         let t = this;
+        t.setState({
+            scrolling: false
+        });
         let scroller = t.refs['scroller' + column].scroller;
         let height = t._itemHeight;
         let remainder = Math.abs(scroller.y % height);
@@ -213,6 +223,9 @@ class Slot extends React.Component {
 
     handleCancel() {
         let t = this;
+        if (t.state.scrolling) {
+            return;
+        }
         try {
             t.props.onCancel();
         } finally {
@@ -222,6 +235,9 @@ class Slot extends React.Component {
 
     handleConfirm() {
         let t = this;
+        if (t.state.scrolling) {
+            return;
+        }
         try {
             t.props.onConfirm(t.getData());
         } finally {
@@ -251,15 +267,17 @@ class Slot extends React.Component {
                 <div ref="root" className={classnames('tSlot', {
                     [className]: !!className
                 })}>
-                    <div className="tSlotHeader tFBH tFC3 tFBAC">
+                    <div className="tSlotHeader tFBH tFBAC">
                         <div className="tSlotCancel" onClick={t.handleCancel.bind(t)}>{t.props.cancelText}</div>
                         <div className="tFB1 tFAC tSlotTitle">{t.state.title}</div>
-                        <div className="tSlotConfirm"  onClick={t.handleConfirm.bind(t)}>{t.props.confirmText}</div>
+                        <div className={classnames('tSlotConfirm', {
+                            enable: !t.state.scrolling
+                        })}  onClick={t.handleConfirm.bind(t)}>{t.props.confirmText}</div>
                     </div>
                     <div className="tSlotBody tFBH tFC9 tPR">
                         {t.state.data.map(function(m, i) {
                             return (
-                                <Scroller ref={'scroller' + i} key={'scroller' + i} className="tFB1" autoRefresh={t.state.show} tap="iscroll:tap" onScrollEnd={t.handleScrollEnd.bind(t, i)}>
+                                <Scroller ref={'scroller' + i} key={'scroller' + i} className="tFB1" autoRefresh={t.state.show} tap="iscroll:tap" onScrollStart={t.handleScrollStart.bind(t, i)} onScrollEnd={t.handleScrollEnd.bind(t, i)}>
                                     <ul>
                                         <li></li>
                                         <li></li>

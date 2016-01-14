@@ -3,6 +3,7 @@
 
 * fix issue #3
 * fix issue #4 add `scrollMod` prop
+* fix issue #5
 
 0.2.2 / 2015-10-09
 ==================
