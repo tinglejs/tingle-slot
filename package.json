@@ -1,13 +1,13 @@
 {
   "name": "tingle-slot",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "老虎机，用于模拟原生的 Select 交互。",
   "repository": "https://github.com/tinglejs/tingle-slot.git",
   "author": {
     "name": "gbk",
     "email": "ck0123456@gmail.com"
   },
-  "maintainers":[
+  "maintainers": [
     "yize <yize.shc@gmail.com>"
   ],
   "main": "src/index.js",
