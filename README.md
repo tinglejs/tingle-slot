@@ -1,4 +1,6 @@
-# tingle-slot [![npm version](https://badge.fury.io/js/tingle-slot.svg)](http://badge.fury.io/js/tingle-slot)
+# tingle-slot
+
+[![npm version](https://badge.fury.io/js/tingle-slot.svg)](http://badge.fury.io/js/tingle-slot)
 
 Slot 是老虎机滚轮选择器。
 
@@ -66,24 +68,31 @@ render() {
 }
 ```
 
-## Options 可用配置
+## Props
 
 Slot 对数据格式的要求比较苛刻，但这是必要的！为了方便用户的使用，提供了两个静态的 formatXxx 函数供用户使用，详见下面的 API。
 
-| 配置项 | 必填 | 默认值 | 功能/备注 |
-|---|----|---|----|
-|className|optional|-|自定义样式类|
-|data|optional|-|数据（注1）|
-|value|optional|-|选中数据（注2）|
-|title|optional|-|表单域名称|
-|confirmText|optional|完成|确认文案|
-|cancelText|optional|取消|取消文案|
-|onChange|optional|-|列选中变化触发的事件（注3）|
-|onConfirm|optional|-|确认所有选中触发的事件（注4）|
-|onCancel|optional|-|取消当前选中触发的事件（注5）|
-|scrollMod|optional|reset|数据替换后的滚动模式（注6）|
+### className
 
-> 注1: data 是一个二维数组，第一维表示滚轮列，第二维表示各列中的选项。
+描述：自定义样式的 `class` 名称。
+类型：`string`
+必选：否
+
+示例：
+
+```
+<Slot className="customClass"></Slot>
+```
+
+### data
+
+描述：数据。
+类型：`Array<Array<Object>>`
+必选：否
+
+示例：
+
+> data 是一个二维数组，第一维表示滚轮列，第二维表示各列中的选项。
 
 每个选项必须包括 text（显示的文字） 和 value（选项的值） 属性。典型的格式如下：
 
@@ -112,7 +121,15 @@ Slot 对数据格式的要求比较苛刻，但这是必要的！为了方便用
 ]
 ```
 
-> 注2: value 是一个一维数组，分别表示每一列的选中值。
+### value
+
+描述：选中数据。
+类型：`Array<Object>`
+必选：否
+
+示例：
+
+> value 是一个一维数组，分别表示每一列的选中值。
 
 数组中的元素一般为 data 中对应选项的引用，也可以通过 value 属性来和选项建立绑定。典型的格式如下：
 
@@ -129,30 +146,133 @@ Slot 对数据格式的要求比较苛刻，但这是必要的！为了方便用
 ]
 ```
 
-> 注3: onChange 参数为 value（当前选中值数组）, column（当前变更的列）, index（当前选中的项）
+### title
 
-> 注4: onConfirm 参数为 value（当前选中值数组）
+描述：弹出滚动选择器的标题。
+类型：`string`
+必选：否
 
-> 注5: onCancel 没有参数
+示例：
 
-> 注6: scrollMod 数据替换后的滚动模式，目前有两种模式：
+```js
+<Slot title="标题"></Slot>
+```
+
+### confirmText
+
+描述：确认文案。
+类型：`string`
+默认：`'完成'`
+必选：否
+
+示例：
+
+```js
+<Slot confirmText="完成"></Slot>
+```
+
+### cancelText
+
+描述：取消文案。
+类型：`string`
+默认：`'取消'`
+必选：否
+
+示例：
+
+```js
+<Slot cancelText="取消"></Slot>
+```
+
+### scrollMod
+
+描述：数据替换后的滚动模式。
+类型：`function`
+默认：`'reset'`
+必选：否
+
+示例：
+
+> scrollMod 数据替换后的滚动模式，目前有两种模式：
 
   - `reset` 模式（默认），会直接替换列数据，并定位到第一个值
   - `keep` 模式，会尝试在新的列数据中查找旧列的已选中值，并定位到该值
 
-## API 接口
+```js
+<Slot scrollMod="reset"></Slot>
+```
+
+### onChange(value, column, index)
+
+描述：列选中变化触发的事件。
+类型：`function`
+必选：否
+
+示例：
+
+```js
+<Slot onChange={(value, column, index) => {
+    // value（当前选中值数组）, column（当前变更的列）, index（当前选中的项）
+    // DO SOMETHING
+}}></Slot>
+```
+
+### onConfirm(value)
+
+描述：确认所有选中触发的事件。
+类型：`function`
+必选：否
+
+示例：
+
+```js
+<Slot onConfirm={(value) => {
+    // value（当前选中值数组）
+    // DO SOMETHING
+}}></Slot>
+```
+
+### onCancel()
+
+描述：取消当前选中触发的事件。
+类型：`function`
+必选：否
+
+示例：
+
+```js
+<Slot onCancel={() => {
+    // DO SOMETHING
+}}></Slot>
+```
+
+## APIs
 
 ### .show()
 
-显示选择器。
+描述：显示选择器。
+
+示例：
+
+```js
+slot.show();
+```
 
 ### .hide()
 
-隐藏选择器。
+描述：隐藏选择器。
+
+示例：
+
+```js
+slot.hide();
+```
 
 ### Slot.formatDataValue(data[, value])
 
-`data` 和 `value` 的非标准格式兼容，返回标准格式的 { data, value }
+描述：`data` 和 `value` 的非标准格式兼容，返回标准格式的 { data, value }。
+
+示例：
 
 ```js
 t.setState(Slot.formatDataValue(xxData, xxValue));
@@ -195,13 +315,19 @@ t.setState(Slot.formatDataValue(xxData, xxValue));
 
 ### Slot.formatColumnValue(columnData[, columnValue])
 
-替换单列的 data 和 value 时使用，兼容规则同上。
+描述：替换单列的 data 和 value 时使用，兼容规则同上。
 
 `columnData` 列数据，一维数组。
 
 `columnValue` 选中的选项。
 
 返回标准格式的 { columnData, columnValue }
+
+示例：
+
+```js
+t.setState(Slot.formatColumnValue(xxData, xxValue));
+```
 
 ## Links 相关链接
 
