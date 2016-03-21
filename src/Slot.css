@@ -23,6 +23,7 @@
 .tSlotCancel,
 .tSlotConfirm {
   min-width: 29px;
+  line-height: 44px;
   font-size: 14px;
   white-space: nowrap;
 }
