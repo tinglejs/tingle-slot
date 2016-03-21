@@ -1,6 +1,6 @@
 {
   "name": "tingle-slot",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "老虎机，用于模拟原生的 Select 交互。",
   "repository": "https://github.com/tinglejs/tingle-slot.git",
   "author": {
